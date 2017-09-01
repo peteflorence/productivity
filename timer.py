@@ -13,6 +13,7 @@ def minutesToSec(minutes):
 
 interval_minutes = 15
 interval = minutesToSec(interval_minutes)
+interval = 5
 
 def timeAndPrint(interval):
   for i in range(int(interval)):
@@ -25,14 +26,30 @@ def timeAndPrint(interval):
   sys.stdout.write('\r' + ' ' * 20)
   print()
 
+def printSuggestions(list_things):
+  for i in list_things:
+    print(i)
+
 beginThing("Think about PhD")
+printSuggestions(['Write on piece of paper...'])
 timeAndPrint(interval)
+
 beginThing("Read latest research")
+printSuggestions(['arXiv sanity...', 'maybe also go through conference proceedings'])
 timeAndPrint(interval)
+
 beginThing("Read latest tech / business")
+printSuggestions(['ieee spectrum', 'techrunch', 'nytimes bits blog'])
 timeAndPrint(interval)
+
 beginThing("Reed software blog")
+printSuggestions(['joel on software', 'martin fowler', 'karpathy'])
 timeAndPrint(interval)
+
 beginThing("Improve this system")
+printSuggestions(['write on piece of paper', 'implement'])
 timeAndPrint(interval)
+
 beginThing("Run")
+timeAndPrint(interval)
+os.system("say done!")
