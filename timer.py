@@ -3,22 +3,38 @@ import os
 import time
 import sys
 from random import shuffle
+import yaml
 
 # TODO
 # Work in workouts in between
 # Text alerts with Twilio?
 # Consider browser extension?
 
-def beginThing(thing):
-  os.system("say Now begin ... ")
-  os.system("say " + thing)
-  print("Currently doing: " + thing)
-
 def minutesToSec(minutes):
   return minutes*60
 
 interval_minutes = 15
 interval = minutesToSec(interval_minutes)
+interval = 5
+
+def printSuggestionsFor(thing):
+  if isinstance(i, dict):
+    for key, value in thing.iteritems():
+      for k2, v2 in value.iteritems():
+        if k2 =="suggestions":
+          for j in v2:
+            print('- '+j)
+
+def getThing(thing):
+  if isinstance(thing, dict):
+    for key, value in thing.iteritems():
+      return key
+  return thing
+
+def beginThing(thing):
+  os.system("say Now begin ... ")
+  os.system("say " + thing)
+  print("Currently doing: " + thing)
 
 def timeAndPrint(interval):
   for i in range(int(interval)):
@@ -40,37 +56,23 @@ shuffle(workouts)
 workout_counter = 0
 def provideWorkout(seconds):
   global workout_counter
+  if workout_counter >= len(workouts):
+    return
   workout = workouts[workout_counter]
   workout_counter += 1
   print("say WORKOUT: " + workout)
   os.system("say WORKOUT: " + workout)
   timeAndPrint(seconds)
 
-beginThing("Think about PhD")
-printSuggestions(['Write on piece of paper...'])
-timeAndPrint(interval)
-provideWorkout(60)
 
-beginThing("Read latest research")
-printSuggestions(['arXiv sanity...', 'maybe also go through conference proceedings'])
-timeAndPrint(interval)
-provideWorkout(60)
+with open('things.yaml', 'r') as f:
+    doc = yaml.load(f)
 
-beginThing("Read latest tech / business")
-printSuggestions(['ieee spectrum', 'techrunch', 'nytimes bits blog'])
-timeAndPrint(interval)
-provideWorkout(60)
+for i in doc:
+  thing = getThing(i)
+  beginThing(thing)
+  printSuggestionsFor(i)
+  timeAndPrint(interval)
+  provideWorkout(2)
 
-beginThing("Reed software blog")
-printSuggestions(['joel on software', 'martin fowler', 'karpathy'])
-timeAndPrint(interval)
-provideWorkout(60)
-
-beginThing("Improve this system")
-printSuggestions(['write on piece of paper', 'implement'])
-timeAndPrint(interval)
-provideWorkout(60)
-
-beginThing("Run")
-timeAndPrint(interval)
 os.system("say done!")
