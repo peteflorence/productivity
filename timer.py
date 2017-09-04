@@ -13,9 +13,11 @@ import yaml
 def minutesToSec(minutes):
   return minutes*60
 
-interval_minutes = 15
+total_minutes_available = 15
+interval_minutes = total_minutes_available / 6
+# interval_minutes = 15
+
 interval = minutesToSec(interval_minutes)
-interval = 5
 
 def printSuggestionsFor(thing):
   if isinstance(i, dict):
@@ -56,10 +58,9 @@ shuffle(workouts)
 workout_counter = 0
 def provideWorkout(seconds):
   global workout_counter
-  if workout_counter >= len(workouts):
-    return
   workout = workouts[workout_counter]
   workout_counter += 1
+  workout_counter = workout_counter % len(workouts)
   print("say WORKOUT: " + workout)
   os.system("say WORKOUT: " + workout)
   timeAndPrint(seconds)
@@ -73,6 +74,6 @@ for i in doc:
   beginThing(thing)
   printSuggestionsFor(i)
   timeAndPrint(interval)
-  provideWorkout(2)
+  provideWorkout(60)
 
 os.system("say done!")
