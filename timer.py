@@ -13,9 +13,9 @@ import yaml
 def minutesToSec(minutes):
   return minutes*60
 
-total_minutes_available = 15
-interval_minutes = total_minutes_available / 6
-# interval_minutes = 15
+#total_minutes_available = 15
+#interval_minutes = total_minutes_available / 6
+interval_minutes = 20
 
 interval = minutesToSec(interval_minutes)
 
@@ -66,7 +66,7 @@ def provideWorkout(seconds):
   timeAndPrint(seconds)
 
 
-with open('things.yaml', 'r') as f:
+with open('today.yaml', 'r') as f:
     doc = yaml.load(f)
 
 for i in doc:
