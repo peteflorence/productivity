@@ -13,9 +13,9 @@ import yaml
 def minutesToSec(minutes):
   return minutes*60
 
-#total_minutes_available = 15
-#interval_minutes = total_minutes_available / 6
-interval_minutes = 20
+total_minutes_available = 30
+interval_minutes = total_minutes_available / 6
+#interval_minutes = 20
 
 interval = minutesToSec(interval_minutes)
 
@@ -26,6 +26,23 @@ def printSuggestionsFor(thing):
         if k2 =="suggestions":
           for j in v2:
             print('- '+j)
+
+def openSite(url, new_window):
+  command = "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome " 
+  command += url
+  if new_window:
+    command += " --new-window" 
+  os.system(command)
+
+def openSitesFor(thing):
+  open_new_window = True
+  if isinstance(i, dict):
+    for key, value in thing.iteritems():
+      for k2, v2 in value.iteritems():
+        if k2 =="open_sites":
+          for j in v2:
+            openSite(j, open_new_window)
+            open_new_window = False
 
 def getThing(thing):
   if isinstance(thing, dict):
@@ -66,13 +83,14 @@ def provideWorkout(seconds):
   timeAndPrint(seconds)
 
 
-with open('today.yaml', 'r') as f:
+with open('things.yaml', 'r') as f:
     doc = yaml.load(f)
 
 for i in doc:
   thing = getThing(i)
   beginThing(thing)
   printSuggestionsFor(i)
+  openSitesFor(i)
   timeAndPrint(interval)
   provideWorkout(60)
 

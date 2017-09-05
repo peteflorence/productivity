@@ -1,11 +1,11 @@
-- Think about PhD:
-    suggestions:
-      - Write on piece of paper...
+# - Think about PhD:
+#     suggestions:
+#       - Write on piece of paper...
 
-- Read latest research:
-    suggestions:
-      - arXiv sanity...
-      - conference proceedings
+# - Read latest research:
+#     suggestions:
+#       - arXiv sanity...
+#       - conference proceedings
 
 - Read latest tech / business:
     suggestions:
@@ -13,6 +13,11 @@
       - ieee spectrum
       - techrunch
       - nytimes bits blog
+    open_sites:
+      - news.ycombinator.com
+      - spectrum.ieee.org/robotics
+      - techcrunch.com
+      - nytimes.com/column/bits
 
 - Read software blog:
     suggestions:
@@ -29,6 +34,7 @@
 
 
 # Todo
+# - specify intervals in things.yaml
 # - make a pause button!
 # - make a skip button!
 # - make html site to run this?
