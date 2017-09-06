@@ -2,3 +2,5 @@ https://web.williams.edu/Mathematics/lg5/Rota.pdf
 https://arxiv.org/pdf/1708.09492v1.pdf
 https://arxiv.org/pdf/1708.05866v1.pdf
 https://www.joelonsoftware.com/2005/05/11/making-wrong-code-look-wrong/ awesome
+https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/
+http://www.cl.cam.ac.uk/~srk31/research/papers/kell17some-preprint.pdf some-for-c

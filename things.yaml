@@ -8,7 +8,12 @@
 - Read latest research:
     suggestions:
       - arXiv sanity...
+      - arXiv Ro
       - conference proceedings
+    open_sites:
+      - arxiv-sanity.com/search?q=cs.RO
+      - arxiv-sanity.com/top
+      - arxiv.org/list/cs.RO/recent
 
 - Read latest tech / business:
     suggestions:
