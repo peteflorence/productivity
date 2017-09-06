@@ -33,6 +33,7 @@ def openSite(url, new_window):
   if new_window:
     command += " --new-window" 
   os.system(command)
+  os.system("open -a Google\ Chrome")
 
 def openSitesFor(thing):
   open_new_window = True
